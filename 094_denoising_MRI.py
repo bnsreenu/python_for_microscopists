@@ -30,10 +30,10 @@ time to experiment with parameters.
 import matplotlib.pyplot as plt
 import pydicom
 
-dataset = pydicom.dcmread("MRI_images/CT_small.dcm")
+dataset = pydicom.dcmread("images/MRI_images/CT_small.dcm")
 img=dataset.pixel_array
 plt.imshow(img, cmap=plt.cm.bone)
-plt.imsave("MRI_images/dcm_to_tiff_converted.tif", img, cmap='gray')
+plt.imsave("images/MRI_images/dcm_to_tiff_converted.tif", img, cmap='gray')
 
 ##########################################################################
 #Denoising filters
@@ -46,14 +46,14 @@ from matplotlib import pyplot as plt
 from skimage import io
 from scipy import ndimage as nd
 
-noisy_img = img_as_float(io.imread("MRI_images/MRI_noisy.tif"))
+noisy_img = img_as_float(io.imread("images/MRI_images/MRI_noisy.tif"))
 #Need to convert to float as we will be doing math on the array
 #Also, most skimage functions need float numbers
-ref_img = img_as_float(io.imread("MRI_images/MRI_clean.tif"))
+ref_img = img_as_float(io.imread("images/MRI_images/MRI_clean.tif"))
                     
 gaussian_img = nd.gaussian_filter(noisy_img, sigma=5)
 plt.imshow(gaussian_img, cmap='gray')
-plt.imsave("MRI_images/Gaussian_smoothed.tif", gaussian_img, cmap='gray')
+plt.imsave("images/MRI_images/Gaussian_smoothed.tif", gaussian_img, cmap='gray')
 
 noise_psnr = peak_signal_noise_ratio(ref_img, noisy_img)
 gaussian_cleaned_psnr = peak_signal_noise_ratio(ref_img, gaussian_img)
@@ -66,7 +66,7 @@ from skimage.restoration import (denoise_tv_chambolle, denoise_bilateral,
                                  denoise_wavelet, estimate_sigma)
 from skimage import img_as_float
 
-noisy_img = img_as_float(io.imread("MRI_images/MRI_noisy.tif"))
+noisy_img = img_as_float(io.imread("images/MRI_images/MRI_noisy.tif"))
 sigma_est = estimate_sigma(noisy_img, multichannel=True, average_sigmas=True)
 
 denoise_bilateral = denoise_bilateral(noisy_img, sigma_spatial=15,
@@ -77,7 +77,7 @@ bilateral_cleaned_psnr = peak_signal_noise_ratio(ref_img, denoise_bilateral)
 print("PSNR of input noisy image = ", noise_psnr)
 print("PSNR of cleaned image = ", bilateral_cleaned_psnr)
 
-plt.imsave("MRI_images/bilateral_smoothed.tif", denoise_bilateral, cmap='gray')
+plt.imsave("images/MRI_images/bilateral_smoothed.tif", denoise_bilateral, cmap='gray')
 
 
 ###### TV ###############
@@ -86,7 +86,7 @@ noise_psnr = peak_signal_noise_ratio(ref_img, noisy_img)
 TV_cleaned_psnr = peak_signal_noise_ratio(ref_img, denoise_TV)
 print("PSNR of input noisy image = ", noise_psnr)
 print("PSNR of cleaned image = ", TV_cleaned_psnr)
-plt.imsave("MRI_images/TV_smoothed.tif", denoise_TV, cmap='gray')
+plt.imsave("images/MRI_images/TV_smoothed.tif", denoise_TV, cmap='gray')
 
 
 ####Wavelet #################
@@ -98,7 +98,7 @@ Wavelet_cleaned_psnr = peak_signal_noise_ratio(ref_img, wavelet_smoothed)
 print("PSNR of input noisy image = ", noise_psnr)
 print("PSNR of cleaned image = ", Wavelet_cleaned_psnr)
 
-plt.imsave("MRI_images/wavelet_smoothed.tif", wavelet_smoothed, cmap='gray')
+plt.imsave("images/MRI_images/wavelet_smoothed.tif", wavelet_smoothed, cmap='gray')
 
 
 #####################
@@ -115,8 +115,8 @@ from skimage.metrics import peak_signal_noise_ratio
 from skimage import io
 
 
-noisy_img = img_as_float(io.imread("MRI_images/MRI_noisy.tif"))
-ref_img = img_as_float(io.imread("MRI_images/MRI_clean.tif"))
+noisy_img = img_as_float(io.imread("images/MRI_images/MRI_noisy.tif"))
+ref_img = img_as_float(io.imread("images/MRI_images/MRI_clean.tif"))
 
 
 denoise_kwargs = dict(multichannel=False, wavelet='db1', method='BayesShrink',
@@ -133,7 +133,7 @@ shft_cleaned_psnr = peak_signal_noise_ratio(ref_img, Shft_inv_wavelet)
 print("PSNR of input noisy image = ", noise_psnr)
 print("PSNR of cleaned image = ", shft_cleaned_psnr)
 
-plt.imsave("MRI_images/Shift_Inv_wavelet_smoothed.tif", Shft_inv_wavelet, cmap='gray')
+plt.imsave("images/MRI_images/Shift_Inv_wavelet_smoothed.tif", Shft_inv_wavelet, cmap='gray')
 
 
 ##########################################################################
@@ -148,8 +148,8 @@ from skimage.metrics import peak_signal_noise_ratio
 
 
 #img = io.imread("MRI_images/MRI_noisy.tif", as_gray=True)
-noisy_img = img_as_float(io.imread("MRI_images/MRI_noisy.tif", as_gray=True))
-ref_img = img_as_float(io.imread("MRI_images/MRI_clean.tif"))
+noisy_img = img_as_float(io.imread("images/MRI_images/MRI_noisy.tif", as_gray=True))
+ref_img = img_as_float(io.imread("images/MRI_images/MRI_clean.tif"))
 
 # niter= number of iterations
 #kappa = Conduction coefficient (20 to 100)
@@ -164,7 +164,7 @@ print("PSNR of cleaned image = ", anisotropic_cleaned_psnr)
 
 
 plt.imshow(img_aniso_filtered, cmap='gray')
-plt.imsave("MRI_images/anisotropic_denoised.tif", img_aniso_filtered, cmap='gray')
+plt.imsave("images/MRI_images/anisotropic_denoised.tif", img_aniso_filtered, cmap='gray')
 
 ##########################################################################
 #NLM from SKIMAGE
@@ -177,8 +177,8 @@ import numpy as np
 from skimage.metrics import peak_signal_noise_ratio
 
 
-noisy_img = img_as_float(io.imread("MRI_images/MRI_noisy.tif", as_gray=True))
-ref_img = img_as_float(io.imread("MRI_images/MRI_clean.tif"))
+noisy_img = img_as_float(io.imread("images/MRI_images/MRI_noisy.tif", as_gray=True))
+ref_img = img_as_float(io.imread("images/MRI_images/MRI_clean.tif"))
 
 sigma_est = np.mean(estimate_sigma(noisy_img, multichannel=False))
 
@@ -196,7 +196,7 @@ denoise_img_as_8byte = img_as_ubyte(NLM_skimg_denoise_img)
 
 #plt.imshow(NLM_skimg_denoise_img)
 #plt.imshow(denoise_img_as_8byte, cmap=plt.cm.gray, interpolation='nearest')
-plt.imsave("MRI_images/NLM_skimage_denoised.tif", denoise_img_as_8byte, cmap='gray')
+plt.imsave("images/MRI_images/NLM_skimage_denoised.tif", denoise_img_as_8byte, cmap='gray')
 ###########################################################################
 #NLM opencv
 # https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_photo/py_non_local_means/py_non_local_means.html
@@ -211,16 +211,16 @@ from skimage import io
 import numpy as np
 from skimage.metrics import peak_signal_noise_ratio
 
-noisy_img = io.imread("MRI_images/MRI_noisy.tif", as_gray=True)  #Only 8 bit supported for CV2 NLM
-ref_img = io.imread("MRI_images/MRI_clean.tif")
+noisy_img = io.imread("images/MRI_images/MRI_noisy.tif", as_gray=True)  #Only 8 bit supported for CV2 NLM
+ref_img = io.imread("images/MRI_images/MRI_clean.tif")
 
 # fastNlMeansDenoising(InputArray src, OutputArray dst, float h=3, int templateWindowSize=7, int searchWindowSize=21 )
 
 NLM_CV2_denoise_img = cv2.fastNlMeansDenoising(noisy_img, None, 3, 7, 21)
 
 
-plt.imsave("MRI_images/NLM_CV2_denoised.tif", NLM_CV2_denoise_img, cmap='gray')
-plt.imshow("MRI_images/NLM_CV2_denoised.tif", NLM_CV2_denoise_img, cmap='gray')
+plt.imsave("images/MRI_images/NLM_CV2_denoised.tif", NLM_CV2_denoise_img, cmap='gray')
+plt.imshow("images/MRI_images/NLM_CV2_denoised.tif", NLM_CV2_denoise_img, cmap='gray')
 
 
 ###########################################################################
@@ -233,8 +233,8 @@ from skimage.metrics import peak_signal_noise_ratio
 import bm3d
 import numpy as np
 
-noisy_img = img_as_float(io.imread("MRI_images/MRI_noisy.tif", as_gray=True))
-ref_img = img_as_float(io.imread("MRI_images/MRI_clean.tif"))
+noisy_img = img_as_float(io.imread("images/MRI_images/MRI_noisy.tif", as_gray=True))
+ref_img = img_as_float(io.imread("images/MRI_images/MRI_clean.tif"))
 
 
 BM3D_denoised_image = bm3d.bm3d(noisy_img, sigma_psd=0.2, stage_arg=bm3d.BM3DStages.ALL_STAGES)
@@ -250,7 +250,7 @@ print("PSNR of cleaned image = ", BM3D_cleaned_psnr)
 
 
 plt.imshow(BM3D_denoised_image, cmap='gray')
-plt.imsave("MRI_images/BM3D_denoised.tif", BM3D_denoised_image, cmap='gray')
+plt.imsave("images/MRI_images/BM3D_denoised.tif", BM3D_denoised_image, cmap='gray')
 
 
 ####################################################
@@ -298,4 +298,4 @@ def ICM(img, iter, beta):
 
 
 if __name__ == '__main__':
-    ICM('MRI_images/BM3D_denoised.tif', 10, 1)
+    ICM('images/MRI_images/BM3D_denoised.tif', 10, 1)
