@@ -1,5 +1,5 @@
-Author: Dr. Sreenivas Bhattiprolu
-Twitter: @digitalsreeni
+<b> Author: Dr. Sreenivas Bhattiprolu </b><br>
+  <b>Twitter: @digitalsreeni </b>
 
 # Python for Microscopists and other image processing enthusiasts
 https://www.youtube.com/channel/UC34rW-HtPJulxr5wp2Xa04w?sub_confirmation=1
