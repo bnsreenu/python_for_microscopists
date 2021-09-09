@@ -67,7 +67,7 @@ print(reg.score(X_train, y_train))  #Prints the R^2 value, a measure of how well
 
 prediction_test = reg.predict(X_test)    
 print(y_test, prediction_test)
-print("Mean sq. errror between y_test and predicted =", np.mean(prediction_test-y_test)**2)
+print("Mean sq. errror between y_test and predicted =", np.mean((prediction_test-y_test)**2)) 
 # A MSE value of about 8 is not bad compared to average # cells about 250.
 
 #Residual plot
