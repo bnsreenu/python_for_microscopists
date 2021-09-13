@@ -173,8 +173,11 @@ print("Mean IoU =", IOU_keras.result().numpy())
 #To calculate I0U for each class...
 values = np.array(IOU_keras.get_weights()).reshape(num_classes, num_classes)
 print(values)
+
+#Please verify the following code for correctness of IoU calculation
+#I may have made some mistake in assigning the right values. 
 class1_IoU = values[1,1]/(values[1,1] + values[1,2] + values[1,3] + values[1,4] + values[2,1]+ values[3,1]+ values[4,1])
-class2_IoU = values[2,2]/(values[2,2] + values[2,1] + values[2,1] + values[2,3] + values[1,2]+ values[3,2]+ values[4,2])
+class2_IoU = values[2,2]/(values[2,2] + values[2,1] + values[2,3] + values[2,4] + values[1,2]+ values[3,2]+ values[4,2])
 class3_IoU = values[3,3]/(values[3,3] + values[3,1] + values[3,2] + values[3,4] + values[1,3]+ values[2,3]+ values[4,3])
 class4_IoU = values[4,4]/(values[4,4] + values[4,1] + values[4,2] + values[4,3] + values[1,4]+ values[2,4]+ values[3,4])
 
