@@ -156,7 +156,8 @@ print("Current threshold value is: ", od.threshold)
 
 # save the trained outlier detector
 #As mentioned in their documentation, save and load is having issues in python3.6 but works fine in 3.7
-#from alibi_detect.utils import save_detector, load_detector
+#from alibi_detect.utils import save_detector, load_detector  #If this does not work, try the next line
+#from alibi_detect.utils.saving import save_detector, load_detector #Use this if the above line does not work. 
 #save_detector(od, "saved_outlier_models/carpet_od_20epochs.h5")
 #od = load_detector(filepath)
 
