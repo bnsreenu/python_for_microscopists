@@ -1,0 +1,1 @@
+These are not required to run the application. The code can be used to train a model and save the pickle file. 
