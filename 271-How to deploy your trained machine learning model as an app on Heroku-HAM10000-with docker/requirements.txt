@@ -1,0 +1,8 @@
+Flask==1.1.2
+Werkzeug==2.0.1
+numpy==1.19.5
+requests==2.24.0
+gunicorn==20.1.0
+scikit-learn==0.23.0
+Pillow==8.3.2
+tensorflow-cpu==2.4.1

@@ -1,0 +1,47 @@
+<!doctype html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- Make it compatible to mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Cancer Lesion Classifier</title>
+ 
+  
+</head>
+
+
+<body style="background: #000;">
+
+<h2 style="color:Violet;">Skin Cancer Lesion Classifier</h2><p>
+<h4 style="color:Violet;">Upload an image and click submit</h4>
+
+
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+	<p style="color:Violet;">
+		<input type="file" name="file" autocomplete="off" required>
+	</p>
+    </dl>
+    <p style="color:Violet;">
+	<input type="submit" name="submit" value="Submit">
+    </p>
+</form>
+
+
+
+<p style="color:MediumSeaGreen;">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+        Diagnosis for the following image is: <u><h3 style="color:MediumSeaGreen;">{{ messages[0] }}</h3></u><br>
+        <img src="{{ messages[1] }}" width="300", height="225">
+       
+	  {% endif %}
+	{% endwith %}
+</p>
+
+
+
+</body>
+
+
