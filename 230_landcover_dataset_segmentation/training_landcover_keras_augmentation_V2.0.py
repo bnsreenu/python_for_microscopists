@@ -8,6 +8,8 @@ images, especially the dataset from landcover.ai
 Dataset from : https://landcover.ai/
 Dataset description: https://arxiv.org/pdf/2005.02264.pdf
 
+Link doesn't seem to work anymore: Try this one instead: https://landcover.ai.linuxpolska.com/
+
 labels:
     0: Unlabeled background 
     1: Buildings
