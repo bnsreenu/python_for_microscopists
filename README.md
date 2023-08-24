@@ -9,11 +9,11 @@ The YouTube channel associated with this code walks you through the entire proce
 <h1>How to cite my work?</h1>
 <p>
   
-**1. YouTube video:**
+<b>1. YouTube video:</b>
 The general format for citing a YouTube video in APA (American Psychological Association) style is:
 Author’s Last Name, First Initial. (Year, Month Day Published). Title of video [Video]. YouTube. URL
 
-So, here is an example:
+So, here is an example: <br>
 _Bhattiprolu, S. (2023, August 23). 330 - Fine tuning Detectron2 for instance segmentation using custom data [Video]. YouTube. https://youtu.be/cEgF0YknpZw_
 </p>
 
@@ -23,6 +23,6 @@ _Bhattiprolu, S. (2023, August 23). 330 - Fine tuning Detectron2 for instance se
 There isn't a universally agreed-upon format for citing GitHub repositories, but here's a commonly used one:
 Author’s Last Name, First Initial. (Year). Title of Repository. GitHub. URL
 
-Example:
+Example: <br>
 _Bhattiprolu, S. (2023). python_for_microscopists. GitHub. https://github.com/bnsreenu/python_for_microscopists/blob/master/330_Detectron2_Instance_3D_EM_Platelet.ipynb_
 </p>
