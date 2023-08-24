@@ -1,13 +1,14 @@
 <b> Author: Dr. Sreenivas Bhattiprolu </b><br>
   <b>Twitter: @digitalsreeni </b>
 
-# DigitalSreeni channel on YouTube for python tutorials with a special focus on image processing
+# Supporting code for the tutorials on DigitalSreeni YouTube channel
 https://www.youtube.com/channel/UC34rW-HtPJulxr5wp2Xa04w?sub_confirmation=1
 
 The YouTube channel associated with this code walks you through the entire process of learning to code in Python; all the way from basics to advanced machine learning and deep learning. The primary emphasis will be on image processing and other relevant functionality. 
 
-<h1>**How to cite my work?**</h1>
+<h1>How to cite my work?</h1>
 <p>
+  
 **1. YouTube video:**
 The general format for citing a YouTube video in APA (American Psychological Association) style is:
 Author’s Last Name, First Initial. (Year, Month Day Published). Title of video [Video]. YouTube. URL
@@ -15,7 +16,9 @@ Author’s Last Name, First Initial. (Year, Month Day Published). Title of video
 So, here is an example:
 _Bhattiprolu, S. (2023, August 23). 330 - Fine tuning Detectron2 for instance segmentation using custom data [Video]. YouTube. https://youtu.be/cEgF0YknpZw_
 </p>
+
 <p>
+  
 **2. GitHub code:**
 There isn't a universally agreed-upon format for citing GitHub repositories, but here's a commonly used one:
 Author’s Last Name, First Initial. (Year). Title of Repository. GitHub. URL
