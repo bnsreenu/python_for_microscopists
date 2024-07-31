@@ -1,0 +1,64 @@
+Performed two experiments: general prompt without specifying how to segment and another similar prompt but specifying to use stardist for nuclei segmentation
+
+Tested: 
+Claude - 3.5 Sonnet
+chatGPT - 4-o
+MetaAI - Llama 3.1 405-B
+Gemini - 1.5 Flash
+Copilot - Not able to find the model name. 
+
+Experiment 1:
+For general prompt without specifying stardist for segmentation:
+All models chose threshold segmentation and required multiple prompts to get the code working. 
+ 
+Claude - Additional prompts:
+1. Prompt about - the shape of .czi image after reading using czifile
+2. Prompt about - AttributeError: module 'skimage.segmentation' has no attribute 'peak_local_max'
+3. Prompt about - TypeError: peak_local_max() got an unexpected keyword argument 'indices'
+
+Code actually worked and segmented nuclei. So asked extra questions about fine-tuning the segmentation:
+4. The code works great. The nuclei are being over-segmented. What can I do to adjust the sensitivity of nuclei separation?
+
+
+chatGPT - Additional prompts
+1. Prompt about - the shape of .czi image after reading using czifile
+2. Prompt about: TypeError: peak_local_max() got an unexpected keyword argument 'indices'
+3. Prompt about: ValueError: operands could not be broadcast together with shapes (481,2) (1104,1376) 
+Bad results, bad segmentation. May be workable, with enough patience. 
+
+
+Meta AI - Additional prompts
+1. Prompt about - the shape of .czi image after reading using czifile
+2. Prompt about - AttributeError: module 'skimage.morphology' has no attribute 'watershed'
+Bad results, horrible segmentation. 
+
+
+
+Gemini - Additional prompts:
+1. Prompt about - the shape of .czi image after reading using czifile
+2. Prompt about - NameError: name 'peak_local_max' is not defined
+3. Prompt about - TypeError: peak_local_max() got an unexpected keyword argument 'indices'
+4. Prompt about - NameError: name 'ndi' is not defined
+5. Prompt about - ValueError: operands could not be broadcast together with shapes (0,2) (1104,1376,1)
+Bad results, horrible segmentation. 
+
+
+Copilot - Copilot is the worst as it used cv2 to try to open .czi image, despite mentioning that I will be working with .czi image.
+
+
+Experiment 2: 
+For stardist based segmentation and analysis.
+
+1. chat GPT - winner. Code worked the first time for stardist based segmentation and analysis. Nice and concise code. 
+
+2. Claude is a close second. Code worked fine the first time with stardist but it forgot to normalize the image leading to wild results. Second prompt provided to normalize. 
+
+3. Meta AI - also a close second. Code worked fine the first time with stardist but it forgot to normalize the image leading to wild results. Second prompt provided to normalize. 
+
+4. Gemini: Bad for coding. No point in even running the code. The language model doesn't seem to know how
+stardist model gets imported and used to segment nuclei. 
+
+5. Copilot: Horrible. Recommended cv2 to open .czi file in the first test so didn't even try for the second test. 
+
+
+Got statistically identical results for segmentation and intensity measurements with chatGPT, Claude, and MetaAI for the ratio of intensities. 

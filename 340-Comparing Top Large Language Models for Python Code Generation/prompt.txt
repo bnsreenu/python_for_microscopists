@@ -1,0 +1,20 @@
+First prompt:
+
+You are a biologist with microscopy and python coding skills. You are tasked with writing python code that loads a microscopy image with .czi extension (my_image.czi) containing three channels, AF568 (Red), AF488 (Green) and DAPI (Blue), respectively. Your goal is to segment individual nucleus using the third channel (DAPI) and measure the mean intensity of the first two channels, respectively, under each nucleus and calculate the ratio of these two intensities for each nucleus. Finally, plot the segmented nuclei image and save the mean intensities and ratios from each nuclei to a csv file. Note that the goal involves segmenting individual nucleus, not just the nuclei region via simple thresholding. 
+
+Write the code for the above task and add appropriate comments for others to follow. 
+
+
+Second prompt:
+Another prompt in the same chat...
+
+Since the image is a .czi file, useczifile library to load the image. Note that the array dimensions for the loaded image would be (1, 2, C, h, w, 1).
+
+Third prompt:
+New chat window.
+
+You are a biologist with microscopy and python coding skills. You are tasked with writing python code that loads a microscopy image with .czi extension (my_image.czi) containing three channels, AF568 (Red), AF488 (Green) and DAPI (Blue), respectively. Your goal is to segment individual nucleus using the third channel (DAPI) and measure the mean intensity of the first two channels, respectively, under each nucleus and calculate the ratio of these two intensities for each nucleus. Finally, plot the segmented nuclei image and save the mean intensities and ratios from each nuclei to a csv file. Note that the goal involves segmenting individual nucleus, not just the nuclei region via simple thresholding. Therefore I recommend using stardist library and working with 2D_versatile_fluo pre-trained model. 
+
+Write the code for the above task and add appropriate comments for others to follow. 
+
+Since the image is a .czi file, useczifile library to load the image. Note that the array dimensions for the loaded image would be (1, 2, C, h, w, 1).
