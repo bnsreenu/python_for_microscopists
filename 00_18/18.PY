@@ -4,13 +4,19 @@ __license__ = "Feel free to copy, I appreciate if you acknowledge Python for Mic
 
 # https://www.youtube.com/watch?v=uDNqNv2N-pY&t=
 
-###########################
-#Reading images
-from PIL import Image 
-  
-img = Image.open("images/test_image.jpg") #Not a numpy array
+#prints current directory 
+import os
+print(os.getcwd()) 
+#check if it exist 
+import os
+print(os.path.exists("python_for_microscopists\\images\\test_image.jpg"))
+
+
+#Actual program -->show image,#Reading images
+from PIL import Image
+
+img = Image.open(r"python_for_microscopists\images\test_image.jpg") #used raw string,r" is important so, instead of /i(esc chr), /t "test_image.jpg" becomes "test mage.jpg lol
 print(type(img))
-# show Images on external default viewer. This can be paint or photo viewer on Windows
 img.show() 
  
 # prints format of image 
@@ -20,37 +26,37 @@ print(img.format)
 print(img.mode) 
 
 print(img. size)  #prints the size of image (width, height)
-
+#####################################################################
 # Resize images
 small_img = img.resize((200, 300))
-small_img.save("images/test_image_small.jpg")  #squished image
+small_img.save(r"python_for_microscopists\images\test_image_small.jpg")  #squished image
 
 # resize() method resizes images to exact value whether it makes sense or not.
 #aspect ratio is not maintained so images are squished.
 #if you want to keep the aspect ration then use thumbnail() method
 
 img.thumbnail((200, 200))
-img.save("images/test_image_small_new.jpg")
+img.save(r"python_for_microscopists\images\test_image_small_new.jpg")
 
 print(img.size)
 
 img.thumbnail((1200, 1200))  #doesn't blow up the image, only reduces the size if original is larger.
-img.save("images/test_image_small_new1.jpg")  
+img.save(r"python_for_microscopists\images\test_image_small_new1.jpg")  
 
 large_img = img.resize((1200, 1300))
-large_img.save("images/test_image_large.jpg")  #enlarged image. 
+large_img.save(r"python_for_microscopists\images\test_image_small_large.jpg")  #enlarged image. 
 print(large_img.size)
 
 #Cropping images
 from PIL import Image 
-img = Image.open("images/test_image.jpg")
+img = Image.open(r"python_for_microscopists\images\test_image.jpg")
 cropped_img = img.crop((0, 0, 300, 300))  #crops from (0,0) to (300,300)
 cropped_img.save("images/cropped_img.jpg")
 
 # We can paste image on another image
 #this involves copying original image and pasting a second image on it
 from PIL import Image 
-img1 = Image.open("images/test_image.jpg")
+img1 = Image.open(r"python_for_microscopists\images\test_image.jpg")
 print(img1.size)
 img2 = Image.open("images/monkey.jpg")
 print(img2.size)
@@ -58,20 +64,20 @@ img2.thumbnail((200, 200))  #Resize in case the image is very large.
 
 img1_copy = img1.copy()   #Create a copy of the large image
 img1_copy.paste(img2, (50, 50))  #Paset the smaller imager image at specified location
-img1_copy.save("images/pasted_image.jpg")
+img1_copy.save(r"python_for_microscopists\images\test_imagepasted_image.jpg")
 
 # Rotating images
 from PIL import Image 
-img = Image.open("images/test_image.jpg")
+img = Image.open(r"python_for_microscopists\images\test_image.jpg")
 
 img_90_rot = img.rotate(90)
-img_90_rot.save("images/rotated90.jpg")  #keeps original aspect ratio and dimensions
+img_90_rot.save(r"python_for_microscopists\images\rotated90.jpg")  #keeps original aspect ratio and dimensions
 
 img_45_rot = img.rotate(45)
-img_45_rot.save("images/rotated45.jpg")  #keeps original aspect ratio and dimensions
+img_45_rot.save(r"python_for_microscopists\images\rotated45.jpg")  #keeps original aspect ratio and dimensions
 
 img_45_rot = img.rotate(45, expand=True)  #Dimensions are expanded to fir the entire image
-img_45_rot.save("images/rotated45.jpg")  
+img_45_rot.save(r"python_for_microscopists\images\rotated45.jpg")  
 
 
 #Flipping or transposing images
@@ -87,7 +93,7 @@ img_flipTB.save("images/flippedTB.jpg")
 
 # Color transforms, convert images between L (greyscale), RGB and CMYK
 from PIL import Image 
-img = Image.open("images/test_image.jpg")
+img = Image.open(r"python_for_microscopists\images\test_image.jpg")
 
 grey_img = img.convert('L')  #L is for grey scale
 grey_img.save("images/grey_img.jpg")

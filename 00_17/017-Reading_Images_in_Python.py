@@ -51,7 +51,7 @@ print(type(img1))
 """
 ###############################################################################
 ######### Using Matplotlib #########
-#Matplotlib is a plotting library for the Python programming language
+#Matplotlib is a plotting library for the Python programming language not a 
 #Pyplot is a Matplotlib module which provides a MATLAB-like interface
 #Pyplot is commonly used not just to generate plots and graphs but also to visualize images.
 #because visualizing images is nothing but plotting data in 2D. 
