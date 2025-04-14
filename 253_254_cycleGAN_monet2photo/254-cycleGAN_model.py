@@ -26,7 +26,7 @@ from numpy.random import randint
 from keras.optimizers import Adam
 from keras.initializers import RandomNormal
 from keras.models import Model
-from keras.models import Input
+from tensorflow.keras.layers import Input
 from keras.layers import Conv2D
 from keras.layers import Conv2DTranspose
 from keras.layers import LeakyReLU
