@@ -9,12 +9,12 @@ import os
 print(os.getcwd()) 
 #check if it exist 
 import os
-print(os.path.exists("python_for_microscopists\\images\\test_image.jpg"))
+print(os.path.exists("..\\images\\test_image.jpg"))
 
 
 #Actual program -->show image,#Reading images
 from PIL import Image
-img = Image.open(r"python_for_microscopists\images\test_image.jpg") #used raw string,r" is important so, instead of /i(esc chr), /t "test_image.jpg" becomes "test mage.jpg lol
+img = Image.open(r"..\images\test_image.jpg") #used raw string,r" is important so, instead of /i(esc chr), /t "test_image.jpg" becomes "test mage.jpg lol
 print(type(img))
 img.show() 
  
@@ -30,9 +30,9 @@ print(img.size)  #prints the size of image (width, height)
 #####################################################################
 # Resize images
 from PIL import Image
-img = Image.open(r"python_for_microscopists\images\test_image.jpg")
+img = Image.open(r"..\images\test_image.jpg")
 resize00_img = img.resize((200, 300))
-resize00_img.save(r"python_for_microscopists\images\test_image_resize.jpg")  #squished image
+resize00_img.save(r"..\images\test_image_resize.jpg")  #squished image
 
 print(resize00_img.size)
 
@@ -40,31 +40,31 @@ print(resize00_img.size)
 #aspect ratio is not maintained so images are squished.
 #if you want to keep the aspect ration then use thumbnail() method
 from PIL import Image
-img = Image.open(r"python_for_microscopists\images\test_image.jpg")
+img = Image.open(r"..\images\test_image.jpg")
 img.thumbnail((200, 200))
-img.save(r"python_for_microscopists\images\test_imagethumbnail_new.jpg")
+img.save(r"..\images\test_imagethumbnail_new.jpg")
 
 print(img.size)
 
 img.thumbnail((1200, 1200))  #doesn't blow up the image, only reduces the size if original is larger.
-img.save(r"python_for_microscopists\images\test_image00thumbnail.jpg")  
+img.save(r"..\images\test_image00thumbnail.jpg")  
 
 large_img = img.resize((1200, 1300))
-large_img.save(r"python_for_microscopists\images\test_image01thumbnail.jpg")  #enlarged image. 
+large_img.save(r"..\images\test_image01thumbnail.jpg")  #enlarged image. 
 print(large_img.size)
 
 #Cropping images
 from PIL import Image 
-img = Image.open(r"python_for_microscopists\images\test_image.jpg")
+img = Image.open(r"..\images\test_image.jpg")
 cropped_img = img.crop((0, 0, 300, 300))  #crops from (0,0) to (300,300)
-cropped_img.save(r"python_for_microscopists\images\test_imagecropped.jpg")
+cropped_img.save(r"..\images\test_imagecropped.jpg")
 
 # We can paste image on another image
 #this involves copying original image and pasting a second image on it
 from PIL import Image 
-img1 = Image.open(r"python_for_microscopists\images\test_image.jpg")
+img1 = Image.open(r"..\images\test_image.jpg")
 print(img1.size)
-img2 = Image.open(r"python_for_microscopists\images\monkey.jpg")
+img2 = Image.open(r"..\images\monkey.jpg")
 print(img2.size)
 img2.thumbnail((200, 200))  #Resize in case the image is very large. 
 img2.show()
