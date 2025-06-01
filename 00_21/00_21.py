@@ -24,26 +24,80 @@ img = io.imread(r"..\images\scratch.jpg") #importing img
 plt.imshow(img)  
 entropy_img = entropy(img, disk(3))
 plt.imshow(entropy_img)
+thresh = threshold_otsu(entropy_img)
+print(thresh)
+binary = entropy_img <= thresh
+plt.imshow(binary)
+print(np.sum(binary == True))
+
+#yellow=1 (clean), purple=0
 
 #img has scratch and healed region: can't use threshold filter as pixel value same throughout 
 #use entropy filter (clean area will have low entropy)
-import glob
+#####################################################################################################################
 
+import matplotlib.pyplot as plt #to plot
+from skimage import io
+from skimage.filters.rank import entropy
+from skimage.morphology import disk
+import numpy as np
+from skimage.filters import threshold_otsu
+import glob #helps in walk through the folder
 time = 0
 time_list=[]
 area_list=[]
-path = r"..\images\scratch_assay*.*"
-for file in glob.glob(path):
+#path = r"..\images\scratch_assay*.*"
+path = r"..\images\scratch_assay*.jpg"
+for file in glob.glob(path): #assign file name
     dict={}
-    img=io.imread(file)
+    img=io.imread(file) #read the file and then calculate entropy
 #use entropy filter (clean area will have low entropy)
-    entropy_img = entropy(img, disk(3))
+    entropy_img = entropy(img, disk(6))
+#otsu filter from skimage, calculate entropy of img
     thresh = threshold_otsu(entropy_img)
     binary = entropy_img <= thresh
-    scratch_area = np.sum(binary == 1)
+    print(np.sum(binary == True))
+    time += 1
     print("time=", time, "hr  ", "Scratch area=", scratch_area, "pix\N{SUPERSCRIPT TWO}")
     time_list.append(time)
     area_list.append(scratch_area)
+    time += 1
+
+
+import glob
+from skimage import io
+from skimage.filters.rank import entropy
+from skimage.morphology import disk
+from skimage.filters import threshold_otsu
+import matplotlib.pyplot as plt
+import numpy as np
+from skimage.color import rgb2gray
+import os
+
+path = r"..\images\scratch_assay\*.jpg"
+files = glob.glob(path)
+print("Found files:", files)
+
+time = 0
+
+for file in files:
+    print(f"\nProcessing: {file}")
+    img = io.imread(file)
+
+    # Convert to grayscale if image is RGB
+    if img.ndim == 3:
+        img = rgb2gray(img)
+
+    entropy_img = entropy((img * 255).astype(np.uint8), disk(6))
+    thresh = threshold_otsu(entropy_img)
+    binary = entropy_img <= thresh
+    print(f"Time {time} - Binary sum:", np.sum(binary))
+
+    plt.imshow(binary, cmap='gray')
+    plt.title(f'Time {time}')
+    plt.axis('off')
+    plt.show()
+
     time += 1
 
 #print(time_list, area_list)
