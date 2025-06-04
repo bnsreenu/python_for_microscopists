@@ -43,28 +43,32 @@ cv2.destroyAllWindows() #destroy the window
 
 #Split and merging channels
 #Show individual color channels in the image
+import cv2
+img = cv2.imread(r"..\images\RGBY.jpg", 1)   #Color is BGR not RGB
 blue = img[:, :, 0]   #Show only blue pic. (BGR so B=0)
-green = img[:, :, 1]  #Show only green pixels
-red = img[:, :, 2]  #red only
+green = img[:, :, 1]  #G=1, Show only green pixels
+red = img[:, :, 2]  #R=2, red only
 
-"""
+
 cv2.imshow("red pic", red)
 cv2.waitKey(0)          
 cv2.destroyAllWindows() 
-"""
 
-#Or split all channels at once
 
+#Or split all channels at once into BGR
+import cv2
+img = cv2.imread(r"..\images\RGBY.jpg", 1) 
 b,g,r = cv2.split(img)
-
 cv2.imshow("green pic", g)
 cv2.waitKey(0)          
 cv2.destroyAllWindows() 
 
 #to merge each image into bgr
 
+import cv2
+img = cv2.imread(r"..\images\RGBY.jpg", 1) 
 img_merged = cv2.merge((b,g,r))
-
+b,g,r = cv2.split(img)
 cv2.imshow("merged pic", img_merged)
 cv2.waitKey(0)          
 cv2.destroyAllWindows() 
@@ -77,7 +81,7 @@ cv2.destroyAllWindows()
 
 import cv2
 
-img = cv2.imread("images/monkey.jpg", 1)   #Color is BGR not RGB
+img = cv2.imread(r"..\images\monkey.jpg", 1)   #Color is BGR not RGB
 
 #use cv2.resize. Can specify size or scaling factor.
 #Inter_cubic or Inter_linear for zooming.
