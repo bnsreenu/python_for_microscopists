@@ -27,7 +27,7 @@ __license__ = "Feel free to copy, I appreciate if you acknowledge Python for Mic
 
 import cv2
 
-grey_img = cv2.imread("images/RGBY.jpg", 0) 
+grey_img = cv2.imread(r"..\images\RGBY.jpg", 0) 
 img = cv2.imread("images/RGBY.jpg", 1)   #Color is BGR not RGB
 
 print(img.shape)     #(586, 415, 3)
