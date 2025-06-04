@@ -20,7 +20,6 @@ from skimage import io, color
 from skimage.transform import rescale, resize, downscale_local_mean
 
 img = io.imread(r"..\images\test_image.jpg", as_gray=True)
-
 #Rescale, resize image by a given factor. While rescaling image
 #gaussian smoothing can performed to avoid anti aliasing artifacts.
 img_rescaled = rescale(img, 1.0 / 4.0, anti_aliasing=False)  #Check rescales image size in variable explorer
