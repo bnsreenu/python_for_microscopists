@@ -27,6 +27,9 @@ from keras.layers import Conv2D, PReLU,BatchNormalization, Flatten
 from keras.layers import UpSampling2D, LeakyReLU, Dense, Input, add
 from tqdm import tqdm
 
+# some versions of Tf.keras will need you to configure channels last to make this notebook work
+# keras.backend.set_image_data_format('channels_last')
+
 #########################################################################
 
 #Define blocks to build the generator
