@@ -25,7 +25,14 @@ import torch
 import torchvision
 print("PyTorch version:", torch.__version__)
 print("Torchvision version:", torchvision.__version__)
-print("CUDA is available:", torch.cuda.is_available())
+# Check device availability
+if torch.backends.mps.is_available():
+    device = torch.device("mps")
+    print("Using Metal (MPS) as backend")
+else:
+    device = torch.device("cpu")
+    print("MPS is not available. Using CPU instead.")
+
 
 
 import numpy as np
@@ -37,9 +44,9 @@ import sys
 sys.path.append("..")
 from segment_anything import sam_model_registry, SamAutomaticMaskGenerator, SamPredictor
 
-
+#%%
         
-image = cv2.imread('houses.jpg')  #Try houses.jpg or neurons.jpg
+image = cv2.imread('/Users/adeelahmed/Desktop/github_file/python_for_microscopists/307 - Segment your images in python without training/houses.jpg')  #Try houses.jpg or neurons.jpg
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 plt.figure(figsize=(10,10))
@@ -48,15 +55,14 @@ plt.axis('off')
 plt.show()
 
 
-sam_checkpoint = "sam_vit_h_4b8939.pth"
+sam_checkpoint = "/Users/adeelahmed/Desktop/github_file/python_for_microscopists/307 - Segment your images in python without training/sam_vit_h_4b8939.pth"
 model_type = "vit_h"
 
-device = "cuda"
 
 sam = sam_model_registry[model_type](checkpoint=sam_checkpoint)
 sam.to(device=device)
 
-
+#%%
 #There are several tunable parameters in automatic mask generation that control 
 # how densely points are sampled and what the thresholds are for removing low 
 # quality or duplicate masks. Additionally, generation can be automatically 
