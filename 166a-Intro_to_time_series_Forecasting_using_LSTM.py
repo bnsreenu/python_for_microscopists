@@ -59,7 +59,7 @@ def to_sequences(dataset, seq_size=1):
     x = []
     y = []
 
-    for i in range(len(dataset)-seq_size-1):
+    for i in range(len(dataset)-seq_size):
         #print(i)
         window = dataset[i:(i+seq_size), 0]
         x.append(window)
@@ -82,12 +82,12 @@ print("Shape of test set: {}".format(testX.shape))
 
 ######################################################
 # Reshape input to be [samples, time steps, features]
-#trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
-#testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+#trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1],1))
+#testX = np.reshape(testX, (testX.shape[0], testX.shape[1],1))
 #
 #print('Single LSTM with hidden Dense...')
 #model = Sequential()
-#model.add(LSTM(64, input_shape=(None, seq_size)))
+#model.add(LSTM(64, input_shape=(seq_size,1)))
 #model.add(Dense(32))
 #model.add(Dense(1))
 #model.compile(loss='mean_squared_error', optimizer='adam')
@@ -99,11 +99,11 @@ print("Shape of test set: {}".format(testX.shape))
 
 #Stacked LSTM with 1 hidden dense layer
 # reshape input to be [samples, time steps, features]
-#trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
-#testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+#trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1],1))
+#testX = np.reshape(testX, (testX.shape[0], testX.shape[1],1))
 #
 #model = Sequential()
-#model.add(LSTM(50, activation='relu', return_sequences=True, input_shape=(None, seq_size)))
+#model.add(LSTM(50, activation='relu', return_sequences=True, input_shape=(seq_size,1)))
 #model.add(LSTM(50, activation='relu'))
 #model.add(Dense(32))
 #model.add(Dense(1))
@@ -115,14 +115,14 @@ print("Shape of test set: {}".format(testX.shape))
 
 #Bidirectional LSTM
 # reshape input to be [samples, time steps, features]
-#trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
-#testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
+#trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1],1))
+#testX = np.reshape(testX, (testX.shape[0],testX.shape[1],1))
 #
 ##For some sequence forecasting problems we may need LSTM to learn
 ## sequence in both forward and backward directions
 #from keras.layers import Bidirectional
 #model = Sequential()
-#model.add(Bidirectional(LSTM(50, activation='relu'), input_shape=(None, seq_size)))
+#model.add(Bidirectional(LSTM(50, activation='relu'), input_shape=(seq_size,1)))
 #model.add(Dense(1))
 #model.compile(optimizer='adam', loss='mean_squared_error')
 #model.summary()
@@ -182,7 +182,7 @@ trainPredictPlot[seq_size:len(trainPredict)+seq_size, :] = trainPredict
 # shift test predictions for plotting
 testPredictPlot = np.empty_like(dataset)
 testPredictPlot[:, :] = np.nan
-testPredictPlot[len(trainPredict)+(seq_size*2)+1:len(dataset)-1, :] = testPredict
+testPredictPlot[len(trainPredict)+(seq_size*2):len(dataset), :] = testPredict
 
 # plot baseline and predictions
 plt.plot(scaler.inverse_transform(dataset))
