@@ -48,7 +48,7 @@ for theta in range(2):   #Define number of thetas
                 kernel = cv2.getGaborKernel((ksize, ksize), sigma, theta, lamda, gamma, 0, ktype=cv2.CV_32F)    
                 kernels.append(kernel)
                 #Now filter the image and add values to a new column 
-                fimg = cv2.filter2D(img2, cv2.CV_8UC3, kernel)
+                fimg = cv2.filter2D(img, cv2.CV_8UC3, kernel)
                 filtered_img = fimg.reshape(-1)
                 df[gabor_label] = filtered_img  #Labels columns as Gabor1, Gabor2, etc.
                 print(gabor_label, ': theta=', theta, ': sigma=', sigma, ': lamda=', lamda, ': gamma=', gamma)
