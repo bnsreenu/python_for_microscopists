@@ -37,7 +37,7 @@ train_ids = next(os.walk(TRAIN_PATH))[1]
 test_ids = next(os.walk(TEST_PATH))[1]
 
 X_train = np.zeros((len(train_ids), IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS), dtype=np.uint8)
-Y_train = np.zeros((len(train_ids), IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool)
+Y_train = np.zeros((len(train_ids), IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool_)
 
 print('Resizing training images and masks')
 for n, id_ in tqdm(enumerate(train_ids), total=len(train_ids)):   
@@ -45,7 +45,7 @@ for n, id_ in tqdm(enumerate(train_ids), total=len(train_ids)):
     img = imread(path + '/images/' + id_ + '.png')[:,:,:IMG_CHANNELS]  
     img = resize(img, (IMG_HEIGHT, IMG_WIDTH), mode='constant', preserve_range=True)
     X_train[n] = img  #Fill empty X_train with values from img
-    mask = np.zeros((IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool)
+    mask = np.zeros((IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool_)
     for mask_file in next(os.walk(path + '/masks/'))[2]:
         mask_ = imread(path + '/masks/' + mask_file)
         mask_ = np.expand_dims(resize(mask_, (IMG_HEIGHT, IMG_WIDTH), mode='constant',  
