@@ -177,8 +177,8 @@ Unlabeled = np.array(tuple(int(Unlabeled[i:i+2], 16) for i in (0, 2, 4))) #155, 
 label = single_patch_mask
 
 # Now replace RGB to integer values to be used as labels.
-#Find pixels with combination of RGB for the above defined arrays...
-#if matches then replace all values in that pixel with a specific integer
+# Find pixels with combination of RGB for the above defined arrays...
+# if matches then replace all values in that pixel with a specific integer
 def rgb_to_2D_label(label):
     """
     Suply our labale masks as input in RGB format. 
@@ -207,7 +207,7 @@ labels = np.expand_dims(labels, axis=3)
 
 print("Unique labels in label dataset are: ", np.unique(labels))
 
-#Another Sanity check, view few mages
+#Another Sanity check, view few images
 import random
 import numpy as np
 image_number = random.randint(0, len(image_dataset))
@@ -287,7 +287,7 @@ history1 = model.fit(X_train, y_train,
 
 #model.save('models/satellite_standard_unet_100epochs_7May2021.hdf5')
 ############################################################
-#TRY ANOTHE MODEL - WITH PRETRINED WEIGHTS
+#TRY ANOTHER MODEL - WITH PRETRAINED WEIGHTS
 #Resnet backbone
 BACKBONE = 'resnet34'
 preprocess_input = sm.get_preprocessing(BACKBONE)
