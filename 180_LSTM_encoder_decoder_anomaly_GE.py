@@ -103,7 +103,7 @@ model.compile(optimizer='adam', loss='mae')
 model.summary()
 
 # fit model
-history = model.fit(trainX, trainY, epochs=10, batch_size=32, validation_split=0.1, verbose=1)
+history = model.fit(trainX, trainX, epochs=10, batch_size=32, validation_split=0.1, verbose=1)
 
 plt.plot(history.history['loss'], label='Training loss')
 plt.plot(history.history['val_loss'], label='Validation loss')
