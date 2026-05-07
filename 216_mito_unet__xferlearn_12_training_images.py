@@ -26,7 +26,7 @@ print(get_python_lib())
 
 Option 2 (especially for Google Colab):
 Work with Tensorflow 1.x
-In google colab, add this as your fitst line.
+In google colab, add this as your first line.
 %tensorflow_version 1.x
 """
 
