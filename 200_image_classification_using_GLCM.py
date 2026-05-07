@@ -68,7 +68,6 @@ from sklearn import preprocessing
 le = preprocessing.LabelEncoder()
 le.fit(test_labels)
 test_labels_encoded = le.transform(test_labels)
-le.fit(train_labels)
 train_labels_encoded = le.transform(train_labels)
 
 #Split data into test and train datasets (already split but assigning to meaningful convention)
