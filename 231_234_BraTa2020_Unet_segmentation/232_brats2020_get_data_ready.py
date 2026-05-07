@@ -26,7 +26,7 @@ import nibabel as nib
 import glob
 from tensorflow.keras.utils import to_categorical
 import matplotlib.pyplot as plt
-from tifffile import imsave
+from tifffile import imwrite
 
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
@@ -130,7 +130,7 @@ plt.title('Mask')
 plt.show()
 
 
-imsave('BraTS2020_TrainingData/combined255.tif', combined_x)
+imwrite('BraTS2020_TrainingData/combined255.tif', combined_x)
 np.save('BraTS2020_TrainingData/combined255.npy', combined_x)
 #Verify image is being read properly
 #my_img=imread('BraTS2020_TrainingData/combined255.tif')
@@ -215,3 +215,4 @@ output_folder = 'BraTS2020_TrainingData/input_data_128/'
 # To only split into training and validation set, set a tuple to `ratio`, i.e, `(.8, .2)`.
 splitfolders.ratio(input_folder, output=output_folder, seed=42, ratio=(.75, .25), group_prefix=None) # default values
 ########################################
+
